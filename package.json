@@ -1,0 +1,15 @@
+{
+  "name": "node-pyspark",
+  "version": "0.1.2",
+  "description": "Apache Spark for nodejs via pyspark",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.test.js"
+  },
+  "keywords": ["pyspark", "spark", "apache spark", "sql", "bigdata"],
+  "author": "themhtechnologies",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0"
+  }
+}

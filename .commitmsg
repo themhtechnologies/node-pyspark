@@ -1,0 +1,11 @@
+0.1.2
+- included spark.table API
+- other minor changes to docu
+
+0.1.1
+- refactored dir structure
+
+0.1.0
+- only dependency is bluebird
+- logging and error handling has been taken care of
+- included helpers
