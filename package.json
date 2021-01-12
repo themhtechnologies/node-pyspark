@@ -8,8 +8,13 @@
   },
   "keywords": ["pyspark", "spark", "apache spark", "sql", "bigdata"],
   "author": "themhtechnologies",
-  "license": "MIT",
+  "license": "SEE LICENSE IN FILE NAMED LICENSE",
   "dependencies": {
     "bluebird": "^3.5.0"
+  },
+  "homepage": "https://github.com/themhtechnologies/node-pyspark/blob/master/README.md",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/themhtechnologies/node-pyspark.git"
   }
 }
