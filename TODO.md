@@ -5,6 +5,7 @@
     - spark.catalog.cacheTable("tableName")
     - column class
       - then implement DataFrame.colRegex
+    - all async must have throw for meta.error - check all methods
 - other pyspark.sql classes eg. udf
 - take out bluebird
 - make use of a uuid pkg - current implementation may cause issues

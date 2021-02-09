@@ -2,11 +2,11 @@
  * Helps to construct the initial js methods from pyspark documentation
  */
 
-methodNames = [...document.querySelectorAll('[id^=pyspark\\.sql\\.DataFrame\\.]')].map(x=> x.textContent.replace('[source]¶', '').split('(')[0].trim().replace('¶', ''))
+methodNames = [...document.querySelectorAll('[id^=pyspark\\.sql\\.DataFrame\\.]')].map(x => x.textContent.replace('[source]¶', '').split('(')[0].trim().replace('¶', ''))
 
-methodArgs = [...document.querySelectorAll('[id^=pyspark\\.sql\\.DataFrame\\.]')].map(x=> { y = x.textContent.replace('[source]¶', '').match(/\((.*?)\)/); return y ? y[1]: null})
+methodArgs = [...document.querySelectorAll('[id^=pyspark\\.sql\\.DataFrame\\.]')].map(x => { y = x.textContent.replace('[source]¶', '').match(/\((.*?)\)/); return y ? y[1] : null })
 
-methodDescription = [...document.querySelectorAll('[id^=pyspark\\.sql\\.DataFrame\\.]')].map( x=> x.nextElementSibling.textContent.split('>>>')[0].trim().split('\n').map(x => '     * '+x).join('\n'))
+methodDescription = [...document.querySelectorAll('[id^=pyspark\\.sql\\.DataFrame\\.]')].map(x => x.nextElementSibling.textContent.split('>>>')[0].trim().split('\n').map(x => '     * ' + x).join('\n'))
 
 
 function createCode(name, args, desc) {
@@ -52,7 +52,9 @@ ${desc}
         // OPTION 2.2
         let data = await python([\`\${this.DataFrameUID}\${args.num >= 0 ? '.limit(' + args.num + ')' : ''}.toPandas().to_dict(\${generatePyFunctionArgs(args.orient)})\`])
         if (meta.error) {
-            throw meta.error
+            let e = meta.error
+            delete meta.error
+            throw e
         }
         return data
 
@@ -62,13 +64,15 @@ ${desc}
         /*
         // add after 'await python....'
         if (meta.error) {
-            throw meta.error
+            let e = meta.error
+            delete meta.error
+            throw e
         }
         */
     }
 `
     }
-    
+
 }
 
 if (!(methodNames.length === methodArgs.length && methodArgs.length === methodDescription.length)) {

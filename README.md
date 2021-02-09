@@ -14,11 +14,17 @@ The API is very similar to the pyspark API with some notable differences:
 // importing is similar to that in pyspark
 const { SparkSession, DataFrame, types, } = require('./index').sql;
 
+// create spark session
+spark = SparkSession.builder.appName("SimpleApp").getOrCreate()
+
 // create a dataframe
 df = spark.createDataFrame({ data: [1, 2, 3], schema: types.IntegerType() })
 
 // show returns a promise
 await df.show()
+
+// stop the sessions
+spark.stop()
 
 ```
 
@@ -26,8 +32,8 @@ await df.show()
 
 > pyspark APIs that have been ported to node-pyspark
 
-| Class/Object    | API               |
-| --------------- | ----------------- |
+| Class/Object    | API               | Comments         |
+| --------------- | ----------------- | ---------------- |
 | Builder         | appName           |
 | Builder         | config            |
 | Builder         | appName           |
@@ -39,7 +45,10 @@ await df.show()
 | SparkSession    | sql               |
 | SparkSession    | stop              |
 | SparkSession    | table             |
-| SparkSession    | put               |
+| SparkSession    | put               | non standard API |
+| SparkSession    | wait              | non standard API |
+| SparkSession    | _exec             |
+| SparkSession    | _eval             |
 | DataFrameReader | csv               |
 | DataFrameReader | format            |
 | DataFrameReader | jdbc              |
@@ -72,28 +81,5 @@ await df.show()
 | DataFrame       | cache             |
 | DataFrame       | checkpoint        |
 | DataFrame       | coalesce          |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
-| DataFrame       |                   |
+| DataFrame       | _exec             |
+| DataFrame       | _eval             |
